@@ -18,5 +18,5 @@ Proyecto de integración de programación para la gestión de productos, categor
 
 1. **Clonar el repositorio y entrar:**
    ```bash
-   git clone <tu-repo>
+   git clone Ev4_PabloAntonio_Cristian
    cd super9
