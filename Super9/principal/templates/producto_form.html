@@ -1,0 +1,170 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* Estilos para la tarjeta del formulario */
+    .form-card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        background-color: #ffffff;
+        overflow: hidden;
+    }
+
+    .form-card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e9ecef;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .form-card-header h2 {
+        margin: 0;
+        font-weight: 700;
+        color: #212529;
+        font-size: 1.75rem;
+    }
+
+    /* Estilo inputs */
+    .form-group input, 
+    .form-group textarea, 
+    .form-group select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus, 
+    .form-group select:focus {
+        border-color: #ffc107;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 0;
+    }
+
+    /* Botón Guardar */
+    .btn-save {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #000;
+        font-weight: 700;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        width: 100%;
+        transition: all 0.2s ease;
+    }
+
+    .btn-save:hover {
+        background-color: #ffca2c;
+        border-color: #ffca2c;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+    }
+
+    /* Enlace Cancelar */
+    .btn-cancel {
+        color: #6c757d;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 1rem;
+    }
+    .btn-cancel:hover {
+        color: #343a40;
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            
+            <div class="form-card">
+                
+                <div class="form-card-header">
+                    <h2>{{ titulo }}</h2>
+                </div>
+
+                <div class="p-4 p-md-5">
+                    
+                    <!-- Mensajes de Error Generales -->
+                    {% if messages %}
+                        <div class="mb-4">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags|default:'info' }} rounded-3 text-center">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <!-- Formulario -->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <!-- Errores generales del form -->
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <!-- Campos -->
+                        {% for field in form %}
+                            <div class="form-group mb-4">
+                                <label for="{{ field.id_for_label }}" class="form-label">
+                                    {{ field.label }}
+                                </label>
+                                
+                                {{ field }}
+
+                                {% if field.help_text %}
+                                    <div class="form-text text-muted small mt-1">{{ field.help_text }}</div>
+                                {% endif %}
+
+                                {% if field.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in field.errors %}
+                                            <i class="fas fa-exclamation-circle me-1"></i> {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
+                        <!-- Botones -->
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn btn-save">
+                                <i class="fas fa-save me-2"></i> Guardar Producto
+                            </button>
+                            
+                            <br>
+                            
+                            <a href="{% url 'lista_productos' %}" class="btn btn-cancel">
+                                Cancelar y volver al listado
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

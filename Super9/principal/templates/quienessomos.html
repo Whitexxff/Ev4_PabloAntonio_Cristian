@@ -1,0 +1,196 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 
+  Estilos CSS específicos para la página "Quiénes Somos".
+-->
+<style>
+    /* Definición de la animación de aparición */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Asignamos el color de fondo elegido */
+    body {
+        background-color: #BCCEB8;
+    }
+
+    /* --- Estilo del Hero Section --- */
+    .about-hero {
+        background-color: #ffffff;
+        border-radius: 1rem;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out forwards;
+    }
+    .about-hero h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        color: #198754; /* Verde principal */
+        margin-bottom: 1rem;
+    }
+    .about-hero p {
+        font-size: 1.25rem;
+        color: #495057;
+        max-width: 700px;
+        margin: 0 auto; /* Centrar el párrafo */
+    }
+
+    /* --- Estilo de las Tarjetas de Valores (similar a base.html) --- */
+    .value-card {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 1rem;
+        padding: 2.5rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out forwards;
+        height: 100%;
+        text-align: center;
+    }
+    .value-icon {
+        font-size: 3rem;
+        color: #198754; /* Verde */
+        margin-bottom: 1.5rem;
+    }
+    .value-card h5 {
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: #212529;
+    }
+
+    /* --- Estilo de la Sección de Imagen --- */
+    .team-image-card {
+        background-color: #ffffff;
+        border-radius: 1rem;
+        padding: 1rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out 0.8s forwards;
+    }
+    .team-image-card img {
+        border-radius: 0.75rem; /* Bordes redondeados para la imagen */
+    }
+
+    /* --- Footer Unificado --- */
+    .super9-footer {
+        background-color: #198754; /* Verde del Header */
+        color: #ffffff;
+        padding: 3rem 1.5rem 1.5rem 1.5rem;
+        margin-top: 4rem;
+    }
+    .super9-footer h5 {
+        font-weight: 600;
+        color: #ffc107; /* Amarillo */
+    }
+    .super9-footer p, .super9-footer a, .super9-footer small {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+    }
+    .super9-footer a:hover {
+        color: #ffffff;
+    }
+    .super9-footer hr {
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+</style>
+
+<!-- 
+  AQUÍ COMIENZA EL CONTENIDO DE LA PÁGINA
+-->
+<div class="container my-5">
+    
+    <!-- Fila 1: Hero Section -->
+    <div class="row">
+        <div class="col-12">
+            <div class="about-hero" style="animation-delay: 0.1s;">
+                <h1>Quiénes Somos</h1>
+                <p>Conoce la historia y los valores que hacen de Super 9 tu supermercado de confianza en la región.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fila 2: Tarjetas de Valores (Misión, Visión, Valores) -->
+    <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+            <div class="value-card" style="animation-delay: 0.3s;">
+                <div class="value-icon"><i class="fas fa-bullseye"></i></div>
+                <h5>Nuestra Misión</h5>
+                <p class="text-muted">Llevar la economía asegurada a todas las comunas de la región de O'Higgins y Maule, ofreciendo un servicio rápido y con la mejor atención.</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="value-card" style="animation-delay: 0.4s;">
+                <div class="value-icon"><i class="fas fa-eye"></i></div>
+                <h5>Nuestra Visión</h5>
+                <p class="text-muted">Ser la cadena de supermercados líder en la región, reconocida por nuestra cercanía, calidad y compromiso con la comunidad local.</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="value-card" style="animation-delay: 0.5s;">
+                <div class="value-icon"><i class="fas fa-heart"></i></div>
+                <h5>Nuestros Valores</h5>
+                <p class="text-muted">Compromiso, Cercanía, Calidad y Confianza. Son los pilares que guían cada una de nuestras acciones diarias.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fila 3: Imagen del Equipo/Local -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="team-image-card">
+                <img src="https://placehold.co/1200x500/198754/FFFFFF?text=Nuestro+Equipo+Super+9" 
+                     class="img-fluid w-100" 
+                     alt="Equipo de Super 9"
+                     onerror="this.src='https://placehold.co/1200x500/eeeeee/cccccc?text=Nuestro+Equipo'">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Estilizado (Estándar del sitio) -->
+<footer class="super9-footer">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <h5>Propósito</h5>
+                <p>Nuestra meta es llevar la economía asegurada a todas las comunas de la región de O'Higgins y Maule, ofreciendo un servicio rápido y con la mejor atención.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5>Contenido</h5>
+                <p>
+                    <a href="{% url 'lista_productos' %}">Catálogo de Ofertas</a><br>
+                    <a href="{% url 'nuestroslocales' %}">Nuestros Locales</a><br>
+                    <a href="{% url 'trabajanosotros' %}">Trabaja con Nosotros</a><br>
+                    <a href="{% url 'quienessomos' %}">Quiénes Somos</a>
+                </p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5>Contacto</h5>
+                <p>
+                    <strong>Fono:</strong> +56 73 2478463<br>
+                    <strong>Email:</strong> contacto@super9.cl<br>
+                    <strong>Horario:</strong> Lunes a Domingo 09:00 - 21:00
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="text-center">
+            <small>&copy; Super 9 2025. Todos los derechos reservados | Diseñado por Agencia Media.</small>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

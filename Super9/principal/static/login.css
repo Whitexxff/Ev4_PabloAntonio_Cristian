@@ -1,0 +1,80 @@
+:root {
+      --verde-principal: #008037;
+      --verde-oscuro: #00692e;
+      --amarillo: #ffcc00;
+      --blanco: #ffffff;
+    }
+
+    body {
+      background: linear-gradient(180deg, var(--verde-principal) 0%, var(--blanco) 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+      border-radius: 1rem;
+      box-shadow: 0 8px 30px rgba(0, 128, 55, 0.15);
+      overflow: hidden;
+    }
+
+    .brand {
+      color: var(--verde-principal);
+      font-weight: 700;
+    }
+
+    .logo-box {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--amarillo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--verde-principal);
+      font-size: 40px;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    }
+
+    .bg-accent {
+      background: linear-gradient(180deg, var(--verde-principal), var(--verde-oscuro));
+      color: var(--blanco);
+    }
+
+    .form-control:focus {
+      border-color: var(--verde-principal);
+      box-shadow: 0 0 0 0.2rem rgba(0, 128, 55, 0.25);
+    }
+
+    .btn-primary {
+      background-color: var(--verde-principal);
+      border-color: var(--verde-principal);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--verde-oscuro);
+      border-color: var(--verde-oscuro);
+    }
+
+    a {
+      color: var(--verde-principal);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--verde-oscuro);
+    }
+
+    .login-header {
+      background: var(--verde-principal);
+      color: var(--amarillo);
+      text-align: center;
+      padding: 1rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }

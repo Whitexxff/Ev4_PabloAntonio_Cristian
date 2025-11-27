@@ -1,0 +1,131 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ingreso - Supermercado El 9</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Asegúrate de que este archivo exista en tu carpeta static -->
+  <!-- <link rel="stylesheet" href="{% static 'login.css' %}"> -->
+  <style>
+    /* Estilos básicos para que se vea bien sin un CSS externo */
+    body {
+      background-color: #f0f9f4; /* Fondo verde muy claro */
+    }
+    .card {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden; /* Para que los bordes redondeados apliquen a las imágenes/columnas internas */
+    }
+    .login-header {
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+    .bg-accent {
+      background-color: #198754; /* Color verde principal (Bootstrap Success) */
+    }
+    .logo-box {
+      width: 60px;
+      height: 60px;
+      background-color: #ffffff;
+      color: #198754; /* Color de texto verde */
+      font-size: 2rem;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+    }
+    .brand {
+      font-weight: 600;
+    }
+    /* Nueva clase para el botón verde */
+    .btn-green {
+      background-color: #198754;
+      border-color: #198754;
+      color: #ffffff;
+    }
+    .btn-green:hover {
+      background-color: #146c43; /* Verde más oscuro al pasar el mouse */
+      border-color: #146c43;
+    }
+  </style>
+</head>
+
+<body class="py-5">
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-5 col-lg-6 col-md-8">
+        <div class="card">
+          <div class="login-header">Supermercado El 9</div>
+          <div class="row g-0">
+            <div class="col-md-5 d-none d-md-flex align-items-center justify-content-center bg-accent p-4">
+              <div class="text-center">
+                <div class="logo-box mb-3">9</div>
+                <h5 class="mb-1 text-white fw-bold">Super 9</h5>
+                <p class="small mb-0 text-warning">Supermercado de confianza</p>
+              </div>
+            </div>
+
+            <div class="col-md-7 p-4 bg-white">
+              <div class="p-3">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="me-auto">
+                    <h5 class="mb-0 brand">Bienvenido</h5>
+                  </div>
+                </div>
+                <form class="login-form" method="POST" action="{% url 'user_login' %}">
+                  {% csrf_token %}
+                  
+                  <div class="mb-3">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de usuario" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="contrasena_usuario" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena_usuario" name="contrasena_usuario" placeholder="••••••••" required>
+                  </div>
+
+                  <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-green">Ingresar</button>
+                  </div>
+                </form>
+                
+                {% if messages %}
+                  <div class="mt-3">
+                    {% for message in messages %}
+                      <div class="alert alert-danger p-2 small text-center" role="alert">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                
+                <hr>
+                <div class="text-center small text-muted">Versión de demostración • Supermercado El 9</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-3 small text-muted">© <span id="year"></span> Supermercado El 9</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Pequeño script para actualizar el año del copyright
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

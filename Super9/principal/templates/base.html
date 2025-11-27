@@ -1,0 +1,193 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- 
+  Añadimos estilos CSS específicos para esta página (base.html).
+  Incluyen las animaciones que solicitaste.
+-->
+<style>
+    /* Agregamos esta regla para el body, con el nuevo color de fondo */
+    body {
+        /* Nuevo color de fondo (verde pálido de la imagen) */
+        background-color: #BCCEB8; 
+    }
+
+    /* Definición de las animaciones */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes subtleFloat {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+
+    /* Estilo del contenedor principal (Hero) */
+    .hero-container {
+        padding: 6rem 1.5rem;
+        text-align: center;
+        /* Actualizamos el gradiente para usar el nuevo fondo */
+        background: linear-gradient(180deg, #ffffff 0%, #BCCEB8 100%);
+        border-radius: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        overflow: hidden; /* Para contener las animaciones */
+    }
+
+    /* Re-utilizamos el estilo del logo del Login, pero más grande */
+    .hero-logo-box {
+        width: 100px;
+        height: 100px;
+        background-color: #198754; /* Verde principal */
+        color: #ffffff; /* '9' en blanco */
+        font-size: 3.5rem;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(25, 135, 84, 0.3);
+        /* Animación: Flotación sutil */
+        animation: subtleFloat 4s ease-in-out infinite;
+    }
+
+    /* Título principal con animación */
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #212529;
+        /* Animación: Aparecer */
+        opacity: 0; /* Inicia invisible */
+        animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    }
+
+    /* Subtítulo con animación */
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: #495057;
+        margin-bottom: 2.5rem;
+        /* Animación: Aparecer (con retraso) */
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    }
+
+    /* Contenedor de botones con animación */
+    .cta-container {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    }
+
+    /* Botón de llamada a la acción principal (CTA) */
+    .btn-cta-primary {
+        /* Usamos el color 'warning' (amarillo) para el CTA principal */
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #000;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-cta-primary:hover {
+        background-color: #ffca2c;
+        border-color: #ffca2c;
+        color: #000;
+        transform: translateY(-2px); /* Efecto de elevación */
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+    }
+
+    /* Botón secundario (verde) */
+    .btn-cta-secondary {
+        background-color: #198754;
+        border-color: #198754;
+        color: #ffffff;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .btn-cta-secondary:hover {
+        background-color: #146c43;
+        border-color: #146c43;
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+
+    /* Sección de "Características" (Opcional pero recomendado) */
+    .feature-card {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+    .feature-icon {
+        font-size: 2.5rem;
+        color: #198754; /* Verde */
+        margin-bottom: 1rem;
+    }
+
+</style>
+
+<div class="container">
+    <!-- Sección Principal (Hero) -->
+    <div class="hero-container">
+        <div class="hero-logo-box">9</div>
+        <h1 class="hero-title">Bienvenido a Super 9</h1>
+        <p class="hero-subtitle">Tu supermercado de confianza. Calidad y frescura al mejor precio.</p>
+        
+        <div class="cta-container">
+            <a href="{% url 'lista_productos' %}" class="btn btn-cta-primary m-2">
+                <i class="fas fa-tags me-2"></i> Ver Catálogo de Ofertas
+            </a>
+            <a href="{% url 'nuestroslocales' %}" class="btn btn-cta-secondary m-2">
+                <i class="fas fa-map-marker-alt me-2"></i> Nuestros Locales
+            </a>
+        </div>
+    </div>
+
+    <!-- Sección de Características (Opcional) -->
+    <div class="row mt-5">
+        <div class="col-lg-4">
+            <div class="feature-card" style="animation-delay: 0.8s;">
+                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                <h5>Frescura Garantizada</h5>
+                <p class="text-muted small">Seleccionamos los mejores productos frescos para ti y tu familia todos los días.</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="feature-card" style="animation-delay: 1s;">
+                <div class="feature-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h5>Precios Insuperables</h5>
+                <p class="text-muted small">Ahorra en cada compra con nuestras ofertas y descuentos exclusivos.</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="feature-card" style="animation-delay: 1.2s;">
+                <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                <h5>Servicio Rápido</h5>
+                <p class="text-muted small">Tu tiempo es valioso. Disfruta de una experiencia de compra ágil y eficiente.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,112 @@
+/* ================================================= */
+        /* ESTILOS DE CABECERA Y SIDEBAR (REUTILIZADOS)      */
+        /* ================================================= */
+
+        :root {
+            --super9-green: #1E8449; /* Verde principal */
+            --super9-dark-green: #0E5A2A; /* Verde oscuro del footer */
+            --super9-yellow: #ffc107; /* Amarillo de botón */
+        }
+
+        .super9-header {
+            background-color: var(--super9-green);
+        }
+        .super9-header .nav-link, .super9-header .navbar-brand {
+            color: white !important;
+            font-weight: 500;
+        }
+        .super9-header .navbar-brand {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        .super9-category-btn {
+            background-color: var(--super9-yellow); 
+            color: black;
+            font-weight: bold;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+            border-radius: 0;
+        }
+
+        /* ------------------------------------------------- */
+        /* ESTILOS ESPECÍFICOS DE CONTACTO                   */
+        /* ------------------------------------------------- */
+
+        /* Breadcrumb (Home / Contacto) */
+        .super9-breadcrumb {
+            padding: 10px 0;
+            background-color: #f8f9fa; /* Fondo gris claro */
+            border-bottom: 1px solid #dee2e6;
+        }
+        .super9-breadcrumb .breadcrumb {
+            margin-bottom: 0;
+            padding-left: 20px; /* Alineación con el resto del contenido */
+        }
+
+        /* Mapa */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ccc; /* Borde sutil alrededor del mapa */
+        }
+
+        /* Bloques de Información (CONTACTO, VISITANOS, HORARIO) */
+        .contact-info h5 {
+            font-weight: bold;
+            color: var(--super9-green);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        .contact-info p {
+            font-size: 0.95rem;
+            line-height: 1.2;
+            color: #6c757d;
+        }
+
+        /* Formulario de Contacto */
+        .contact-form .form-control {
+            border-radius: 0; /* Bordes rectos como en la imagen */
+            border: 1px solid #ced4da;
+            background-color: #f8f9fa; /* Fondo gris claro */
+        }
+        .contact-form .form-control:focus {
+            box-shadow: none;
+            border-color: var(--super9-green);
+            background-color: white;
+        }
+        .contact-form .btn-submit {
+            background-color: var(--super9-green);
+            color: white;
+            padding: 10px 30px;
+            font-weight: bold;
+            border-radius: 0;
+        }
+        .contact-form .btn-submit:hover {
+            background-color: var(--super9-dark-green);
+        }
+
+        /* Footer */
+        .super9-footer {
+            background-color: var(--super9-green);
+            color: white;
+            padding: 30px 0 10px 0;
+        }
+        .super9-footer h5 {
+            color: var(--super9-yellow);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .super9-footer p, .super9-footer small {
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .super9-footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        .super9-footer a:hover {
+            color: white;
+        }

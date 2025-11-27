@@ -1,0 +1,103 @@
+ /* ================================================= */
+        /* ESTILOS PERSONALIZADOS PARA COINCIDIR CON LA IMAGEN */
+        /* ================================================= */
+
+        /* Variables de color */
+        :root {
+            --super9-green: #1E8449; /* Verde principal del header y enlaces de categoría */
+            --super9-yellow: #ffc107; /* Amarillo para botones y acentos */
+        }
+
+        /* 1. Header (Barra de Navegación Superior) */
+        .super9-header {
+            background-color: var(--super9-green);
+        }
+        .super9-header .nav-link, .super9-header .navbar-brand {
+            color: white !important;
+            font-weight: 500;
+        }
+        .super9-header .navbar-brand {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        
+        /* 2. Barra de Búsqueda */
+        .super9-search-bar .form-control {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-color: #ced4da;
+        }
+        .super9-search-bar .btn {
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-left: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        /* 3. Sidebar de Categorías */
+        .super9-sidebar {
+            padding-right: 20px;
+        }
+        .super9-category-btn {
+            background-color: var(--super9-yellow); 
+            color: black;
+            font-weight: bold;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+            border-radius: 0;
+        }
+        .super9-category-list .list-group-item {
+            border: none;
+            padding-left: 0;
+            color: var(--super9-green);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .super9-category-list .list-group-item:hover {
+            background-color: #e9ecef;
+            text-decoration: underline;
+        }
+        /* Item activo/seleccionado, si lo hubiera */
+        .super9-category-list .list-group-item.active {
+            background-color: #f0fff0;
+            color: var(--super9-green);
+            font-weight: bold;
+            border-left: 3px solid var(--super9-green);
+            padding-left: 17px;
+        }
+
+        /* 4. Breadcrumb */
+        .super9-breadcrumb .breadcrumb-item a {
+            color: #6c757d; /* Color por defecto de Bootstrap para texto secundario */
+            text-decoration: none;
+        }
+        .super9-breadcrumb .breadcrumb-item.active {
+            color: #212529; /* Color de texto más oscuro para el elemento activo */
+            font-weight: 500;
+        }
+
+        /* 5. Contenido Principal de Productos (VACÍO) */
+        .super9-empty-state {
+            text-align: center;
+            padding: 80px 0;
+        }
+        .super9-empty-state .empty-icon {
+            font-size: 10rem; /* Tamaño grande para el icono */
+            color: #ced4da; /* Color gris suave */
+            margin-bottom: 20px;
+        }
+        .super9-empty-state h3 {
+            color: var(--super9-green); /* Verde de Super 9 para "VACÍO" */
+            font-weight: bold;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .super9-empty-state p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }

@@ -1,0 +1,74 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    
+    {% if messages %}
+        <div class="mb-4">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags|default:'info' }} text-center">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold text-dark">Gestión de Categorías</h1>
+        <a href="{% url 'crear_categoria' %}" class="btn btn-warning fw-bold">
+            <i class="fas fa-plus me-1"></i> Nueva Categoría
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0 align-middle">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="ps-4 py-3">Nombre</th>
+                            <th class="py-3">Descripción</th>
+                            <th class="pe-4 py-3 text-end">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cat in categorias %}
+                        <tr>
+                            <td class="ps-4 fw-bold text-primary">{{ cat.nombre }}</td>
+                            <td class="text-muted">{{ cat.descripcion|default:"-"|truncatechars:50 }}</td>
+                            <td class="pe-4 text-end">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <a href="{% url 'editar_categoria' id=cat.id %}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form action="{% url 'eliminar_categoria' id=cat.id %}" method="POST" onsubmit="return confirm('¿Eliminar la categoría {{ cat.nombre }}?');">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center py-5 text-muted">
+                                <i class="fas fa-folder-open fa-3x mb-3 d-block"></i>
+                                No hay categorías registradas.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-3">
+        <a href="{% url 'lista_productos' %}" class="text-decoration-none text-muted">
+            <i class="fas fa-arrow-left me-1"></i> Volver a Productos
+        </a>
+    </div>
+</div>
+{% endblock %}

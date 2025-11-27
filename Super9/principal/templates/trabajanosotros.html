@@ -1,0 +1,221 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 
+  Estilos CSS específicos para la página "Trabaja con Nosotros".
+-->
+<style>
+    /* Definición de la animación de aparición */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Asignamos el color de fondo elegido */
+    body {
+        background-color: #BCCEB8;
+    }
+
+    /* --- Estilo de la Tarjeta de Postulación --- */
+    .job-card {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 1rem;
+        padding: 3rem; /* Más padding para que "respire" */
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out forwards;
+    }
+
+    .job-card h3 {
+        font-weight: 700;
+        font-size: 2.25rem;
+        color: #198754; /* Verde principal */
+        text-align: center;
+    }
+    
+    .job-card p {
+        font-size: 1.1rem;
+        color: #495057;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    /* Estilo del formulario */
+    .super9-job-form {
+        margin-top: 2.5rem;
+    }
+    .super9-job-form .form-label {
+        font-weight: 600;
+        color: #495057;
+    }
+    .form-control-file {
+        /* Estilo personalizado para el input de archivo si es necesario */
+    }
+
+    /* --- Botones de CTA (Call to Action) --- */
+    .btn-whatsapp {
+        background-color: #198754; /* Verde */
+        border-color: #198754;
+        color: #ffffff;
+        font-weight: 600;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .btn-whatsapp:hover {
+        background-color: #146c43;
+        border-color: #146c43;
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+    
+    .btn-submit-job {
+        background-color: #ffc107; /* Amarillo */
+        border-color: #ffc107;
+        color: #000;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-submit-job:hover {
+        background-color: #ffca2c;
+        border-color: #ffca2c;
+        color: #000;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+    }
+    
+    /* --- Footer Unificado --- */
+    .super9-footer {
+        background-color: #198754; /* Verde del Header */
+        color: #ffffff;
+        padding: 3rem 1.5rem 1.5rem 1.5rem;
+        margin-top: 4rem;
+    }
+    .super9-footer h5 {
+        font-weight: 600;
+        color: #ffc107; /* Amarillo */
+    }
+    .super9-footer p, .super9-footer small {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    .super9-footer hr {
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+</style>
+
+
+<!-- 
+  AQUÍ COMIENZA EL CONTENIDO DE LA PÁGINA
+  Se han eliminado las etiquetas <body>, <link> y <script> duplicadas.
+-->
+<div class-="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            
+            <div class="job-card">
+                <h3 class="mb-4">¿Quieres ser parte de nuestro equipo?</h3>
+
+                <p>
+                    Buscamos personas proactivas y responsables para diversas áreas.
+                </p>
+
+                <!-- 
+                  CAMBIO: El número de WhatsApp ahora es un botón funcional 
+                  que abre la app de WhatsApp.
+                -->
+                <div class="text-center my-4">
+                    <a href="https://wa.me/56967782747" target="_blank" class="btn btn-whatsapp btn-lg">
+                        <i class="fab fa-whatsapp me-2"></i> Envíanos un WhatsApp
+                    </a>
+                </div>
+
+                <p>
+                    O si prefieres, completa los siguientes datos y estaremos en contacto.
+                </p>
+                
+                <!-- 
+                  Formulario mejorado:
+                  - Se añade method="POST" y enctype="multipart/form-data" (para archivos).
+                  - Se corrige el botón de envío.
+                -->
+                <form class="super9-job-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="nombreCompleto" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="nombreCompleto" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="comuna" class="form-label">Ciudad/Comuna</label>
+                            <input type="text" class="form-control" id="comuna">
+                        </div>
+                        
+                        <div class="col-12">
+                            <label for="area" class="form-label">Área de Interés (Ej: Reponedor, Cajero, Bodega)</label>
+                            <input type="text" class="form-control" id="area">
+                        </div>
+
+                        <div class="col-12 mt-4">
+                            <label for="cvFile" class="form-label">Adjuntar Currículum Vitae (PDF o DOCX)</label>
+                            <input class="form-control form-control-file" type="file" id="cvFile" accept=".pdf,.doc,.docx" required>
+                        </div>
+                        
+                        <!-- 
+                          CAMBIO: Botón corregido y estilizado. 
+                          Se eliminó el <div> que tenía clases "btn".
+                        -->
+                        <div class="col-12 text-center mt-5">
+                            <button type="submit" class="btn btn-submit-job">
+                                <i class="fas fa-paper-plane me-2"></i> Enviar Postulación
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer Estilizado (Reemplazando el anterior) -->
+<footer class="super9-footer">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <h5>Propósito</h5>
+                <p>Nuestra meta es llevar la economía asegurada a todas las comunas de la región de O'Higgins y Maule, ofreciendo un servicio rápido y con la mejor atención característica de supermercados el 9.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5>Contacto</h5>
+                <p>
+                    <strong>Fono:</strong> +56 73 2478463<br>
+                    <strong>Horario:</strong> Lunes - Domingo: 09:00 - 21:00
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="text-center">
+            <small>© Super 9 2025. Todos los derechos reservados | Diseñado por Agencia Media.</small>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}
